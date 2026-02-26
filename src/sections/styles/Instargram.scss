@@ -1,0 +1,44 @@
+.instar-inner {
+    width: 2400px;
+    margin: 0 auto; 
+    
+    display: flex;
+    flex-direction: column;
+
+    .t-wrap {
+        width: 100%; 
+        
+        h2.tit {
+            color: var(--primary);
+        }
+        p.txt {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 2rem;
+            font-style: italic;
+        }
+    }
+
+    .instar-list {
+        width: 100%; 
+        margin-top: 20px;
+        position: relative;
+
+        .insta-slider {
+            width: 100%;
+            .swiper-slide {
+                width: 200px;
+                height: 200px; 
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-color: #f0f0f0;
+
+                .insta-link {
+                    display: block;
+                    height: 100%;
+                    font-size: 0;
+                }
+            }
+        }
+    }
+}
