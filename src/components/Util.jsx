@@ -8,8 +8,11 @@ const Util = () => {
     <ul className='util-list'>
       {utilData.map((u) => (
         <li key={u.id}>
-          <a href={u.href}>
-            <img src={u.icon} alt="" />
+          <a 
+          href={u.href}
+          className='icon-link'
+          style={{'--svg-url':`url(${u.icon})`}}>
+            <img src={u.icon} alt={u.label} />
           </a>
         </li>
       ))}

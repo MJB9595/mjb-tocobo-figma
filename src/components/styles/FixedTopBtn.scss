@@ -13,21 +13,22 @@
     .top-btn {
         width: 5.6rem;
         height: 5.6rem;
-        background: var(--secondary) url(/img/icon_top.svg) center/40% no-repeat;
+        background: var(--primary) url(/img/icon_top.svg) center/40% no-repeat;
         border-radius: 50%;
         cursor: pointer;
         font-size: 0;
     }
-    .talk-btn {
-        width: 5.6rem;
-        height: 5.6rem;
-        background: url(/img/icon_talk.svg) no-repeat center/contain;
-        margin: 1rem 0;
-        font-size: 1.5rem;
-        color: var(--bg);
-        align-content: center;
-    }
+    // .talk-btn {
+    //     width: 5.6rem;
+    //     height: 5.6rem;
+    //     background: url(/img/icon_talk.svg) no-repeat center/contain;
+    //     margin: 1rem 0;
+    //     font-size: 1.5rem;
+    //     color: var(--bg);
+    //     align-content: center;
+    // }
     p{
+        margin: 1rem 0;
         color:var(--primary);
         font-family: 'Source Serif 4', serif;
         font-style: italic;

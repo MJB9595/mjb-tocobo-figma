@@ -9,52 +9,40 @@ import './styles/Hero.scss'
 import {heroSlides} from '../util/hero'
 const Hero = () => {
   return (
-    <div className="hero-container">
-
+    <div className='hero-wrap'>
       <Swiper
-        modules={[Pagination, Navigation]}
-        pagination={{
-          el:'.swiper-pagination',
-          type: 'fraction'
-        }}
-        navigation={{
-          nextEl:'.arr-next',
-          prevEl:'.arr-prev'
-        }}
-        className="hero-slider"
+        modules={[Pagination]}
+        pagination={{ clickable: true }} // 하단 클릭 가능한 버튼
         loop={true}
+        className='hero-slider'
       >
-        {heroSlides.map((slide)=>(
+        {heroSlides.map((slide) => (
+          <SwiperSlide key={slide.id} style={{ backgroundColor: slide.bgColor }}>
+            <div className={`slide-content slide-${slide.id}`}>
+              
+              {/* 왼쪽 분리된 이미지 영역 */}
+              <div className="left-images">
+                <img src={slide.imgTopLeft} alt="상단 작은 이미지" className="img-top" />
+                <img src={slide.imgCenterLeft} alt="중앙 배경 이미지" className='img-center' />
+                <img src={slide.imgBottomLeft} alt="하단 작은 이미지" className="img-bottom" />
+              </div>
 
-        <SwiperSlide 
-        className={`hero-slide ${slide.id}`}
-        style={{backgroundImage:`url(${slide.image.desktop})`}}
-        key={slide.id}>
-          <div className="inner">
-            <div className="t-wrap">
-              <h2 
-              className="tit"
-              dangerouslySetInnerHTML={{__html:slide.title}}
-               />
-                
-              <p className="txt">
-                {slide.subtitle}
-              </p>
-              <a href={slide.ctaHref} className='btn'>
-                {slide.ctaText}
-              </a>
+              {/* 가운데 세로 텍스트 영역 */}
+              <div className="t-wrap">
+                <p className="main-txt">{slide.text1}</p>
+                <p className="main-txt">{slide.text2}</p>
+                <a href='#' className="badge">{slide.badge}</a>
+              </div>
+
+              {/* 오른쪽 메인 이미지 영역 */}
+              <div className="right-images">
+                <img src={slide.imgCenterRight} alt="우측 메인 배경 이미지" className='img-center-right'/>
+                <img src={slide.imgRight} alt="오른쪽 메인 병 이미지" className='img-right-main'/>
+              </div>
+
             </div>
-          </div>
-          
           </SwiperSlide>
         ))}
-
-
-      <div className="hero-nav">
-          <div className="arr-prev">prev</div>
-          <div className="swiper-pagination"></div>
-          <div className="arr-next">next</div>
-      </div>
       </Swiper>
     </div>
   )

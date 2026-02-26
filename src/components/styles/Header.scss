@@ -45,7 +45,36 @@ header{
         }
         .util-list{
             display: flex;
-            gap: 1.2rem;
-        }
+            align-items: center;
+            gap: 2rem;
+            li {
+                .icon-link {
+                display: inline-block;
+                width: 28px;
+                height: 28px; 
+                background-color: var(--primary); 
+
+                -webkit-mask-image: var(--svg-url);
+                mask-image: var(--svg-url);
+                -webkit-mask-size: contain;
+                mask-size: contain;
+                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
+                -webkit-mask-position: center;
+                mask-position: center;
+                
+                transition: background-color 0.3s ease;
+
+                    img {
+                        display: none;
+                    }
+
+                    &:hover {
+                        background-color: #b2996e; 
+                    }
+                }
+            }
+        }           
+        
     }
 }
