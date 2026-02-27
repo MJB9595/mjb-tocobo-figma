@@ -42,6 +42,13 @@ header{
             left: 50%;
             top: 50%;
             transform: translate(-50%,-50%);
+            a {
+                display: block;
+                img {
+                    width: 200px;
+                    height: auto;
+                }
+            }
         }
         .util-list{
             display: flex;
