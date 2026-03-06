@@ -8,6 +8,11 @@ footer {
         gap: 5rem;
         .left {
             flex: 1;
+            a {
+                img {
+                    width: 200px;
+                }
+            }
             h3 {
                 margin-bottom: 4rem;
             }

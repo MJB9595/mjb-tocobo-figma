@@ -4,52 +4,24 @@ const img = (path) => `/img/${path}`;
 export const collectionData = [
     {
       id: 1,
-      title: '비타민 모공 수축 토너',
-      name: 'Vita Berry Pore Toner',
-      kname: '비타 베리 포어 토너 기획세트',
+      title: '놀랍도록 복합적인 향',
+      name: '권난희 | HEE 소믈리에',
+      kname: '리뷰_1',
       image: img('product_1.png')
     },
     {
       id: 2,
-      title: '비타민 모공 수축 토너',
-      name: 'Vita Berry Pore Toner',
-      kname: '비타 베리 포어 토너 기획세트',
+      title: '화사한 과실향의 균형감',
+      name: '이사라 | 온지음 레스토랑 소믈리에',
+      kname: '리뷰_2',
       image: img('product_2.png')
     },
     {
       id: 3,
-      title: '비타민 모공 수축 토너',
-      name: 'Vita Berry Pore Toner',
-      kname: '비타 베리 포어 토너 기획세트',
+      title: '백세주, 기품 있는 술',
+      name: '박성배 | 온지음 레스토랑 조리장',
+      kname: '리뷰_3',
       image: img('product_3.png')
-    },
-    {
-      id: 4,
-      title: '비타민 모공 수축 토너',
-      name: 'Vita Berry Pore Toner',
-      kname: '비타 베리 포어 토너 기획세트',
-      image: img('product_4.png')
-    },
-    {
-      id: 5,
-      title: '비타민 모공 수축 토너',
-      name: 'Vita Berry Pore Toner',
-      kname: '비타 베리 포어 토너 기획세트',
-      image: img('product_5.png')
-    },
-    {
-      id: 6,
-      title: '비타민 모공 수축 토너',
-      name: 'Vita Berry Pore Toner',
-      kname: '비타 베리 포어 토너 기획세트',
-      image: img('product_6.png')
-    },
-    {
-      id: 7,
-      title: '비타민 모공 수축 토너',
-      name: 'Vita Berry Pore Toner',
-      kname: '비타 베리 포어 토너 기획세트',
-      image: img('product_7.png')
     }
   ]
   
