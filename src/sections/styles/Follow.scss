@@ -130,4 +130,34 @@
       }
     }
   }
+
+  @media (max-width: 1024px) {
+    .follow-wrap .follow-inner {
+        gap: 3rem;
+        padding: 0 2rem;
+        
+        .left-collage { width: 50%; }
+        .right-text {
+            width: 50%;
+            .tit { font-size: 3rem; }
+            .desc { font-size: 1.3rem; margin-bottom: 2rem; }
+            .btn-meet { padding: 1rem 2.5rem; }
+        }
+    }
+}
+
+.follow-wrap .follow-inner {
+    transition: gap 0.5s ease, padding 0.5s ease;
+    
+    .left-collage {
+        width: 55%;
+        transition: width 0.5s ease; /* 추가 */
+        /* ... 기존 코드 ... */
+    }
+    .right-text {
+        width: 45%;
+        transition: width 0.5s ease; /* 추가 */
+        /* ... 기존 코드 ... */
+    }
+}
 }

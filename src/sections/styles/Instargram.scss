@@ -1,6 +1,10 @@
 .instar-inner {
-    width: 2400px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto; 
+    padding-top: 10rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     
     display: flex;
     flex-direction: column;
@@ -12,9 +16,11 @@
             color: var(--primary);
         }
         p.txt {
-            font-family: 'Source Serif Pro', serif;
+            margin-top: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: rgb(0, 0, 0, 0.5);
+            font-family: 'SeoulHangang';
             font-size: 2rem;
-            font-style: italic;
         }
     }
 
@@ -40,5 +46,11 @@
                 }
             }
         }
+    }
+    .instar-list .insta-slider .swiper-slide {
+        /* 고정 px 대신 100%로 두고 스와이퍼가 비율을 잡게 함 */
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1; 
     }
 }

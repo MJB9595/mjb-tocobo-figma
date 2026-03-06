@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   logoData,
   companyData,
@@ -10,6 +10,8 @@ import {
 import './styles/Footer.scss'
 
 const Footer = () => {
+  const [isCsOpen, setIsCsOpen] = useState(false); // 토글 상태
+
   return (
     <footer>
       <div className='inner footer-inner'>
@@ -20,13 +22,11 @@ const Footer = () => {
             </a>
           </h3>
           <ul className="foot-list-1">
-            {/* companyData */}
             {companyData.map((line, i) => (
-              <li key={i}>
-                {line}
-              </li>
+              <li key={i}>{line}</li>
             ))}
           </ul>
+          
           <div className="footer-legal">
             <p>{footerLegal.copyright}</p>
             <div className="legal-links">
@@ -36,9 +36,9 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-
           </div>
         </div>
+
         <div className="center">
           <div className="foot-menus">
             {footerMenus.map((menu, i) => (
@@ -47,9 +47,7 @@ const Footer = () => {
                 <ul>
                   {menu.items.map((item, j) => (
                     <li key={j}>
-                      <a href={item.href}>
-                        {item.label}
-                      </a>
+                      <a href={item.href}>{item.label}</a>
                     </li>
                   ))}
                 </ul>
@@ -57,39 +55,38 @@ const Footer = () => {
             ))}
           </div>
         </div>
+
         <div className="right">
           <div className='cus-wrap'>
-            <h4>
+            {/* 안전한 상태 업데이트 및 클릭 클래스 추가 */}
+            <h4 
+              className="toggle-title" 
+              onClick={() => setIsCsOpen(prev => !prev)}
+            >
               {customerCenterData.title}
+              <span className="toggle-icon">{isCsOpen ? '-' : '+'}</span>
             </h4>
-            <div className="hidden">
+            
+            <div className={`cs-content ${isCsOpen ? 'open' : ''}`}>
               <p className="cs-box">
                 <a href={customerCenterData.tel.href}>
                   {customerCenterData.tel.value}
                 </a>
               </p>
-
               <p>{customerCenterData.hours}</p>
-
               <p>{customerCenterData.notice}</p>
-
               <a className='talk-btn' href={customerCenterData.talk.href}>
                 {customerCenterData.talk.label}
               </a>
             </div>
           </div>
+
           <div className='r-sns'>
             <ul className="sns-links">
               {socialLinks.map((sns)=>(
                 <li key={sns.id}>
-                  <a href={sns.href}
-                  target='_blank'
-                  rel="noreferrer noopener"
-                  title={sns.label}
-                  aria-label={sns.label}>
-                    {React.createElement(sns.icon,{
-                      size:22, "aria-hidden":true
-                    })}
+                  <a href={sns.href} target='_blank' rel="noreferrer noopener" title={sns.label} aria-label={sns.label}>
+                    {React.createElement(sns.icon,{ size:22, "aria-hidden":true })}
                   </a>
                 </li>
               ))}

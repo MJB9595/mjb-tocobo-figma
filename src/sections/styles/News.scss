@@ -1,0 +1,177 @@
+.news-wrap {
+  width: 100%;
+  background-color: #FEFEF2; 
+  
+  padding: clamp(10rem, 8vw, 15rem) 0; 
+  
+  overflow: hidden; 
+
+  .news-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    padding: 0 4rem;
+
+    .left-visuals {
+      width: 50%;
+      position: relative;
+      aspect-ratio: 1 / 1.1; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        position: absolute;
+        height: auto;
+      }
+
+      /* 2. 배경 붓터치 잘림 해결 및 크기/위치 조정 */
+      .bg-brush {
+        width: 80%; /* 화면 왼쪽으로 확 뻗어나가도록 엄청 크게 키움 */
+        left: -55%;  /* 왼쪽으로 쑥 밀어냄 */
+        top: 30%;
+        transform: translateY(-50%);
+        z-index: 1;
+        opacity: 0.9;
+      }
+
+      /* 3. 밝은 병 (뒤쪽) */
+      .bottle-light {
+        width: 22%; 
+        left: 18%; /* 왼쪽으로 배치 */
+        top: 10%; /* 살짝 아래로 */
+        z-index: 2;
+        filter: blur(1.5px); /* 뒤에 있는 느낌을 위해 블러 살짝 강화 */
+      }
+
+      /* 4. 어두운 병 (앞쪽 메인) */
+      .bottle-dark {
+        width: 25%; 
+        left: 36%; /* 중앙에서 살짝 우측으로 */
+        top: 2%;  /* 시원하게 위쪽으로 뻗도록 */
+        z-index: 3;
+      }
+
+      /* 5. 쌀 (어두운 병 우측 하단) */
+      .rice {
+        width: 50%; 
+        bottom: 5%; /* 바닥에 착 붙게 */
+        left: 50%;  /* 어두운 병을 살짝 덮으면서 우측으로 퍼지게 */
+        z-index: 4;
+      }
+    }
+
+    /* =================================
+       우측 슬라이더 및 텍스트 (이전과 동일)
+    ================================= */
+    .right-slider-wrap {
+      width: 45%;
+      position: relative;
+      padding: 0 6rem; 
+
+      .news-text-slider {
+        .text-content {
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .tit {
+            font-size: clamp(3.6rem, 4vw, 5.4rem);
+            font-family: 'SeoulHangang', '명조체', serif;
+            color: #222;
+            margin-bottom: 2rem;
+            letter-spacing: 0.2rem;
+          }
+
+          .sub-tit {
+            font-size: clamp(1.6rem, 2vw, 2.2rem);
+            font-family: 'SeoulHangang', serif;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 3.5rem;
+          }
+
+          .desc {
+            font-size: clamp(1.4rem, 1.2vw, 1.6rem);
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 6rem;
+            word-break: keep-all; 
+          }
+
+          .contact {
+            font-size: clamp(1.2rem, 1vw, 1.4rem);
+            color: #555;
+            font-family: 'Times New Roman', serif; 
+          }
+        }
+      }
+
+      .btn-prev, .btn-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 4.5rem;
+        height: 4.5rem;
+        font-size: 0;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0.3; 
+        transition: all 0.3s ease;
+
+        &:hover { opacity: 0.8; }
+        &.swiper-button-disabled { opacity: 0.1; cursor: auto; }
+      }
+
+      .btn-prev {
+        left: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='1.2' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E");
+      }
+
+      .btn-next {
+        right: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='1.2' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .news-wrap .news-inner {
+        padding: 0 2rem;
+        gap: 3rem;
+        
+        .left-visuals { width: 45%; }
+        .right-slider-wrap {
+            width: 55%;
+            padding: 0 3rem;
+            
+            .news-text-slider .text-content {
+                .tit { font-size: 3rem; }
+                .sub-tit { font-size: 1.6rem; }
+                .desc { font-size: 1.3rem; margin-bottom: 3rem; }
+            }
+        }
+    }
+}
+
+.news-wrap .news-inner {
+    transition: gap 0.5s ease, padding 0.5s ease;
+    
+    .left-visuals {
+        width: 50%;
+        transition: width 0.5s ease; /* 추가 */
+        /* ... 기존 코드 ... */
+    }
+    .right-slider-wrap {
+        width: 45%;
+        transition: width 0.5s ease, padding 0.5s ease; /* 추가 */
+        /* ... 기존 코드 ... */
+    }
+}
+}

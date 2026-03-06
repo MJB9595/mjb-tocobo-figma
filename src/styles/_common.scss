@@ -1,7 +1,10 @@
 .section {
+
+    
     padding: 6rem 0;
     position: relative;
     z-index: 0;
+    background-color: #FEFEF2;
 
     &#hero {
         padding: 0;
@@ -17,6 +20,7 @@
     }
 
     &#skincare {
+        background-color: #FEFEF2;
         &::after {
             display: block;
             content: "";
@@ -25,12 +29,12 @@
             height: 10rem;
             left: 0;
             bottom: 0;
-            background-color: var(--bg2);
+            background-color: #FEFEF2;
         }
     }
 
     &#instargram {
-        background-color: var(--bg2);
+        background-color: #ffffff;
     }
 
     h2.tit {
@@ -140,4 +144,16 @@ footer {
         }
     }
 
+}
+
+.section,
+header,
+footer {
+    .inner {
+        max-width: var(--maxw);
+        margin: auto;
+        position: relative;
+        height: 100%;
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* 이 부분 추가! */
+    }
 }

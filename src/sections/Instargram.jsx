@@ -12,14 +12,17 @@ const Instargram = () => {
           Instagram
         </h2>
           <p className="txt">
-            @tocobo_official
+            @bekseju_official
           </p>
       </div>
           <ul className="instar-list">
             <li>
               <Swiper
-              slidesPerView={6}
+              slidesPerView={3}
               spaceBetween={10}
+              breakpoints={{
+                1024: { slidesPerView: 6 }
+              }}
               className='insta-slider'
               >
                 {insta.map((is)=>(

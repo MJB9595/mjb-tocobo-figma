@@ -28,9 +28,9 @@ export const headerData = {
             type: 'section'
         },
         {
-            id: 'skincare',
+            id: 'news',
             label: 'NEWS',
-            href: '#skincare',
+            href: '#news',
             type: 'section'
         },
         {

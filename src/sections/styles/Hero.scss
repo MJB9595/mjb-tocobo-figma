@@ -3,6 +3,11 @@
   height: 100vh;
   overflow: hidden;
 
+  height: clamp(600px, 45vw + 30vh, 100vh); 
+  overflow: hidden;
+  
+  transition: height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+
   --swiper-pagination-bullet-horizontal-gap: 6px;
 
   .hero-slider {
@@ -322,4 +327,66 @@
     width: 74px;
     opacity: 1;
   }
+/* =========================================
+   1024px 이하 태블릿 및 모바일 반응형 (Hero 섹션)
+========================================= */
+@media (max-width: 1024px) {
+    .hero-wrap {
+        /* 1. 최소 높이를 400px -> 280px 수준으로 대폭 낮춰서 계속 유연하게 줄어들게 함 */
+        height: clamp(280px, 50vw, 550px); 
+        
+        .hero-slider .swiper-slide .slide-content {
+            padding: 0 4vw;
+
+            .t-wrap {
+                left: 50%;
+                /* 텍스트 줄 간격 최소값도 낮춤 */
+                gap: clamp(0.5rem, 2.5vw, 2rem); 
+
+                .main-txt { 
+                    /* 2. 글자 최소 크기를 2.2rem -> 1.4rem으로 낮춰 모바일에서도 자연스럽게 축소 */
+                    font-size: clamp(1.4rem, 3.5vw, 3.6rem); 
+                    letter-spacing: clamp(0.1rem, 0.8vw, 0.5rem);
+                    word-spacing: clamp(0.5rem, 2vw, 1.5rem);
+                }
+
+                .badge {
+                    /* 3. 뱃지 크기의 '최소 멈춤 선'을 허물어서 끝까지 작아지게 만듦 */
+                    width: clamp(22px, 5vw, 55px) !important;
+                    height: clamp(55px, 12vw, 130px) !important;
+                    font-size: clamp(1rem, 1.6vw, 1.6rem) !important;
+                }
+            }
+            
+            /* 좌우 이미지 너비는 퍼센트(%)라서 알아서 잘 줄어듭니다 */
+            &.slide-1, &.slide-2, &.slide-3 {
+                .left-images { width: 30%; }  
+                .right-images { width: 42%; } 
+            }
+
+            /* 뱃지 위치 (기존과 동일) */
+            &.slide-1 .t-wrap .badge { left: -30%; bottom: -10%; }
+            &.slide-2 .t-wrap .badge { right: -15%; bottom: -15%; }
+            &.slide-3 .t-wrap .badge { left: -60%; bottom: 0; }
+        }
+    }
+
+    /* 4. 페이지네이션(인디케이터)도 화면이 줄어들면 막대기 크기가 같이 앙증맞게 축소됨 */
+    .swiper-pagination-bullets {
+        bottom: clamp(10px, 3vw, 30px) !important; /* 하단 여백도 화면에 맞춰 줄어듦 */
+        left: 0 !important;      
+        width: 100% !important;  
+        text-align: center;      
+
+        .swiper-pagination-bullet {
+            /* 막대기 길이와 두께도 clamp를 걸어 끝까지 부드럽게 줄어들게 처리 */
+            width: clamp(15px, 3vw, 30px); 
+            height: clamp(3px, 0.5vw, 5px); 
+            margin: 0 4px !important; 
+        }
+        .swiper-pagination-bullet-active {
+            width: clamp(25px, 4.5vw, 45px); 
+        }
+    }
+}
 }

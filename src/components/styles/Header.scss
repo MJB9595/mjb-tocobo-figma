@@ -1,6 +1,6 @@
-header{
+header {
     position: fixed;
-    top:4rem;
+    top: 4rem;
     width: 100%;
     z-index: 5;
     height: 10.5rem;
@@ -12,36 +12,42 @@ header{
         justify-content: space-between;
         align-items: center;
 
-        .nav-list{
+        /* 데스크탑에서는 햄버거 버튼 숨김 */
+        .btn-menu {
+            display: none;
+        }
+
+        .nav-list {
             display: flex;
             gap: 2rem;
-            a{
+            a {
                 display: block;
                 font-size: 1.8rem;
                 text-transform: capitalize;
-                color:var(--primary);
+                color: var(--primary);
                 padding: 0 .5rem;
                 position: relative;
-                &::after{
+                &::after {
                     display: block;
                     position: absolute;
                     width: 0%;
                     height: .1rem;
                     background-color: var(--primary);
-                    content:"";
+                    content: "";
                     left: 0;
                     transition: width .3s ease;
                 }
-                &:hover::after{
+                &:hover::after {
                     width: 100%;
                 }
             }
         }
+
         h1.tit {
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
             a {
                 display: block;
                 img {
@@ -50,38 +56,105 @@ header{
                 }
             }
         }
-        .util-list{
+
+        .util-list {
             display: flex;
             align-items: center;
             gap: 2rem;
             li {
                 .icon-link {
-                display: inline-block;
-                width: 28px;
-                height: 28px; 
-                background-color: var(--primary); 
+                    display: inline-block;
+                    width: 28px;
+                    height: 28px; 
+                    background-color: var(--primary); 
+                    -webkit-mask-image: var(--svg-url);
+                    mask-image: var(--svg-url);
+                    -webkit-mask-size: contain;
+                    mask-size: contain;
+                    -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+                    -webkit-mask-position: center;
+                    mask-position: center;
+                    transition: background-color 0.3s ease;
 
-                -webkit-mask-image: var(--svg-url);
-                mask-image: var(--svg-url);
-                -webkit-mask-size: contain;
-                mask-size: contain;
-                -webkit-mask-repeat: no-repeat;
-                mask-repeat: no-repeat;
-                -webkit-mask-position: center;
-                mask-position: center;
-                
-                transition: background-color 0.3s ease;
-
-                    img {
-                        display: none;
-                    }
-
-                    &:hover {
-                        background-color: #b2996e; 
-                    }
+                    img { display: none; }
+                    &:hover { background-color: #b2996e; }
                 }
             }
         }           
-        
+    }
+}
+
+/* 1024px 이하 태블릿 및 모바일 반응형 */
+@media (max-width: 1111px) {
+    header .inner {
+        padding: 0 2rem;
+
+        /* 1. 네비게이션 랩을 화면 밖(-100%)에 숨겨둔 전체화면 오버레이로 변경 */
+        .nav-wrap {
+            position: fixed;
+            top: 0;
+            left: -110%; 
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg); // 하얀색 배경
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: left 0.4s ease; /* 부드러운 슬라이드 애니메이션 */
+
+            /* 메뉴 버튼 클릭 시 들어옴 */
+            &.open {
+                left: 0; 
+            }
+
+            /* 메뉴들을 세로로 큼직하게 정렬 */
+            .nav-list {
+                flex-direction: column; 
+                gap: 5rem;
+                text-align: center;
+                a {
+                    font-size: 3.5rem; 
+                }
+            }
+        }
+
+        /* 2. 햄버거 버튼 보이기 및 X 모양 변형 스타일 */
+        .btn-menu {
+            display: block;
+            position: relative;
+            width: 30px;
+            height: 22px;
+            z-index: 30; /* 메뉴 오버레이보다 위에 있어야 닫을 수 있음 */
+            cursor: pointer;
+
+            span {
+                display: block;
+                position: absolute;
+                height: 2px;
+                width: 100%;
+                background-color: var(--primary);
+                transition: all 0.3s ease;
+                left: 0;
+
+                &:nth-child(1) { top: 0; }
+                &:nth-child(2) { top: 10px; }
+                &:nth-child(3) { top: 20px; }
+            }
+
+            /* active 클래스가 붙으면 햄버거가 X 모양으로 변형 */
+            &.active span:nth-child(1) {
+                top: 10px;
+                transform: rotate(45deg);
+            }
+            &.active span:nth-child(2) {
+                opacity: 0;
+            }
+            &.active span:nth-child(3) {
+                top: 10px;
+                transform: rotate(-45deg);
+            }
+        }
     }
 }
