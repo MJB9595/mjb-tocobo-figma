@@ -7,6 +7,7 @@ import Hero from './sections/Hero'
 import Footer from './components/Footer'
 import Follow from './sections/Follow'
 import Collection from './sections/Collection'
+import Ingredient from './sections/Ingredient'
 import News from './sections/News'
 import Instargram from './sections/Instargram'
 import TopBanner from './components/TopBanner'
@@ -55,6 +56,9 @@ function App() {
         </section>
         <section id="collection" className='section'>
           <Collection />
+        </section>
+        <section id="ingredient" className='section'>
+          <Ingredient />
         </section>
         <section id="news" className='section'>
           <News />

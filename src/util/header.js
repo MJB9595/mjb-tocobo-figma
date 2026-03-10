@@ -28,6 +28,12 @@ export const headerData = {
             type: 'section'
         },
         {
+            id: 'ingredient',
+            label: 'INGREDIENT',
+            href: '#ingredient',
+            type: 'section'
+        },
+        {
             id: 'news',
             label: 'NEWS',
             href: '#news',
