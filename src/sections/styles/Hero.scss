@@ -2,7 +2,7 @@
   width: 100%;
   overflow: hidden;
 
-  height: clamp(400px, 45vw + 30vh, 100vh); 
+  height: clamp(380px, 55vw, 100vh);
   overflow: hidden;
   
   transition: height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -49,10 +49,9 @@
           .main-txt {
             writing-mode: vertical-rl;
             text-orientation: mixed;
-            
-            font-size: clamp(2.8rem, 3.5vw, 4.8rem);
-            letter-spacing: clamp(0.4rem, 0.8vw, 1.0rem);
-            word-spacing: clamp(1.5rem, 2vw, 3.0rem);
+            font-size: clamp(2.2rem, 2.8vw, 4.8rem); 
+            letter-spacing: clamp(0.2rem, 0.6vw, 1.0rem);
+            word-spacing: clamp(0.8rem, 1.5vw, 3.0rem);
             
             font-family: 'SeoulHangang';
             white-space: nowrap; 
@@ -94,7 +93,6 @@
 
         &.slide-1 {
           .t-wrap .main-txt { 
-
             color: #444444; 
           }
           .t-wrap .badge {
@@ -168,7 +166,9 @@
 
         &.slide-2 {
           .t-wrap .main-txt { color: #fff; }
+          /* ▼ 수정: font-size를 기존 대비 약 20% 축소 (2vw→1.6vw, 2.7rem→2.16rem) */
           .t-wrap .badge {
+            font-size: clamp(1.28rem, 1.6vw, 2.16rem);
             bottom: -20%;
             right: -20%;
             mix-blend-mode: hard-light;
@@ -237,15 +237,20 @@
         }
 
         &.slide-3 {
-          .t-wrap .main-txt { color: #7B7B7B; }
+          .t-wrap .main-txt { 
+            color: #7B7B7B;
+          }
           .t-wrap .badge {
-            width: 80%;
-            height: 35%;
+            width: clamp(44px, 4.5vw, 80px);
+            height: clamp(110px, 11.5vw, 196px);
+            font-size: clamp(1.3rem, 1.6vw, 2.4rem);
             bottom: -8%;
             left: -85%;
             background-image: url('/img/badge3.svg'); 
             letter-spacing: 0.1rem;
-            word-spacing: 2.0rem;
+            word-spacing: 0.5rem;
+            overflow: visible;
+            white-space: nowrap;
           }
 
           .left-images {
@@ -328,13 +333,12 @@
     opacity: 1;
   }
 }
+
 /* =========================================
    1024px 이하 태블릿 및 모바일 반응형 (Hero 섹션)
 ========================================= */
 @media (max-width: 1111px) {
     .hero-wrap {
-        height: clamp(380px, 55vw, 600px);
-        
         .hero-slider .swiper-slide .slide-content {
             padding: 0 3vw;
 
@@ -342,12 +346,6 @@
                 left: 38%;
                 top: 50%;
                 gap: clamp(1.5rem, 2.5vw, 2rem); 
-
-                .main-txt { 
-                    font-size: clamp(2.4rem, 3vw, 3.6rem); 
-                    letter-spacing: clamp(0.1rem, 0.8vw, 0.5rem);
-                    word-spacing: clamp(0.5rem, 2vw, 1.5rem);
-                }
 
                 .badge {
                     width: clamp(40px, 4vw, 60px) !important;
@@ -357,7 +355,6 @@
                 }
             }
             
-            /* 좌우 이미지 너비는 퍼센트(%)라서 알아서 잘 줄어듭니다 */
             &.slide-1 {
                 .left-images { width: 30%; }  
                 .right-images { width: 55%; } 
@@ -368,7 +365,6 @@
                   .img-center-right{
                     left: 30%;
                   }
-                
                 } 
             }
              
@@ -381,32 +377,333 @@
               .right-images {
                 width: 53%;
               }
+              .t-wrap {
+                top: 60%;
+              }
             }
-            
 
-            /* 뱃지 위치 (기존과 동일) */
+            /* 뱃지 위치 */
             &.slide-1 .t-wrap .badge { left: 10%; bottom: -30%; }
             &.slide-2 .t-wrap .badge { right: -15%; bottom: -15%; }
-            &.slide-3 .t-wrap .badge { left: -75%; bottom: 0;  
-            width: clamp(50px, 5vh, 70px) !important;}
+            &.slide-3 .t-wrap .badge { left: -80%; bottom: 0;  
+            width: clamp(40px, 4.5vh, 60px) !important;}
         }
     }
 
-    /* 4. 페이지네이션(인디케이터)도 화면이 줄어들면 막대기 크기가 같이 앙증맞게 축소됨 */
     .swiper-pagination-bullets {
-        bottom: 15px !important; /* 하단 여백도 화면에 맞춰 줄어듦 */
+        bottom: 15px !important; 
         left: 0 !important;      
         width: 100% !important;  
         text-align: center;      
 
         .swiper-pagination-bullet {
-            /* 막대기 길이와 두께도 clamp를 걸어 끝까지 부드럽게 줄어들게 처리 */
             width: clamp(15px, 3vw, 30px); 
             height: clamp(3px, 0.5vw, 5px); 
             margin: 0 4px !important; 
         }
         .swiper-pagination-bullet-active {
             width: clamp(25px, 4.5vw, 45px); 
+        }
+    }
+}
+
+/* =========================================
+   780px 이하 모바일 전면 개편 (Hero 섹션)
+========================================= */
+@media (max-width: 780px) {
+    .hero-wrap {
+        height: clamp(550px, 140vw, 850px);
+        
+        .hero-slider .swiper-slide .slide-content {
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 4vw 4rem; 
+
+            .left-images { display: none; }
+
+            .right-images {
+                order: 1; 
+                width: 80%; 
+                margin: 0 auto 2rem;
+                aspect-ratio: 1 / 1;
+
+                .img-center-right, .img-right-main {
+                    top: 50% !important;
+                    left: 50% !important;
+                    transform: translate(-50%, -50%) scale(1.6) !important;
+                }
+            }
+
+            .t-wrap {
+                order: 2; 
+                position: relative; 
+                top: auto;
+                left: auto;
+                transform: none;
+                flex-direction: column; 
+                
+                align-items: stretch; 
+                gap: 1.2rem;
+                width: 100%;
+                
+                padding: 0 18vw;
+                box-sizing: border-box;
+
+                .main-txt {
+                    writing-mode: horizontal-tb; 
+                    font-size: clamp(2.8rem, 8vw, 3.8rem); 
+                    letter-spacing: 0.1rem;
+                    word-spacing: 0.5rem;
+                    text-align: left; 
+                    
+                    &:nth-of-type(2) {
+                        text-align: right;
+                    }
+                }
+
+                /* ▼ 모바일 공통: badge SVG·스타일 초기화 후 가로형 pill로 전환 */
+                .badge {
+                    position: relative; 
+                    left: auto !important; right: auto !important; bottom: auto !important;
+                    writing-mode: horizontal-tb;
+                    /* 데스크탑 세로형 SVG 제거 — 각 슬라이드에서 모바일 SVG로 덮어씀 */
+                    background-image: none !important;
+                    margin-top: 1rem;
+                    align-self: flex-end;
+                    /* ▼ 모바일 공통 badge 폰트: 1111px 기준 1.6rem × 1.6배
+                       조절 시 clamp(최솟값, 뷰포트비례, 최댓값) 형식으로 수정 */
+                    font-size: clamp(2.2rem, 5.5vw, 2.56rem) !important;
+                    width: clamp(100px, 28vw, 150px) !important;
+                    height: auto !important;
+                    aspect-ratio: 2.5 / 1 !important; 
+                }
+            }
+
+            /* ── slide-1 모바일 ── */
+            &.slide-1 {
+                .t-wrap {
+                    top: 10% !important;
+                    left: auto !important;
+                    align-items: stretch; 
+                    .main-txt { text-align: left; } 
+                    .main-txt:nth-of-type(2) { text-align: right; } 
+                    /* ▼ 모바일 전용 badge SVG */
+                    .badge {
+                        align-self: flex-end;
+                        background-image: url('/img/m_badge1.svg') !important;
+                    }
+                }
+            }
+
+            /* ── slide-2 모바일 ── */
+            &.slide-2 {
+                .right-images { 
+                    position: relative; 
+                    z-index: 10 !important;
+
+                    .img-center-right {
+                        display: none !important;
+                    }
+                }
+                .left-images {
+                    display: block; 
+                    position: absolute;
+                    width: 80%;
+                    height: 60%; 
+                    top: 8rem; 
+                    left: 0;
+                    z-index: 50 !important;
+
+                    .img-center { display: none; } 
+                    
+                    .img-top {
+                        width: 35%;
+                        position: absolute;
+                        top: 5%;
+                        left: 8%;
+                        transform: none; 
+                        box-shadow: none;
+                        z-index: auto !important;
+                    }
+                    
+                    .img-bottom {
+                        width: 45%;
+                        position: absolute;
+                        bottom: 10%;
+                        right: -30%;
+                        transform: none;
+                        box-shadow: none;
+                        z-index: auto !important;
+                    }
+                }
+
+                .t-wrap {
+                    top: 10% !important;
+                    left: auto !important;
+                    align-items: stretch; 
+
+                    .main-txt:nth-of-type(1) { 
+                        order: 2; 
+                        text-align: right; 
+                    }
+                    .main-txt:nth-of-type(2) { 
+                        order: 1; 
+                        text-align: left; 
+                    }
+                    /* ▼ 모바일 전용 badge SVG */
+                    .badge { 
+                        order: 3; 
+                        align-self: flex-end;
+                        background-image: url('/img/m_badge2.svg') !important;
+                    }
+                }
+            }
+
+            /* ── slide-3 모바일 ── */
+            &.slide-3 {
+                padding: 0 !important;
+                flex-direction: column;
+                justify-content: flex-end;
+
+                .right-images {
+                    order: 1;
+                    position: absolute !important;
+                    top: 45%;
+                    left: 40%;
+                    transform: translateX(-50%);
+                    width: 62% !important;
+                    aspect-ratio: 940 / 460 !important;
+                    margin: 0 !important;
+                    z-index: 3 !important;
+
+                    .img-center-right { display: none !important; }
+
+                    .img-right-main {
+                        width: 100% !important;
+                        top: 50% !important;
+                        left: 50% !important;
+                        transform: translate(-50%, -50%) scale(1) !important;
+                        object-fit: cover;
+                    }
+                }
+
+                .left-images {
+                    display: block !important;
+                    position: absolute !important;
+                    transform: scale(1.3);
+                    width: 100%;
+                    height: 100%;
+                    top: 25%;
+                    left: -15%;
+                    z-index: 5;
+                    order: 0;
+
+                    .img-top { display: none !important; }
+
+                    .img-center {
+                        display: block !important;
+                        position: absolute !important;
+                        width: 52% !important;
+                        top: 8% !important;
+                        left: 2% !important;
+                        bottom: auto !important;
+                        right: auto !important;
+                        transform: none !important;
+                        opacity: 0.1;
+                        z-index: 1;
+                    }
+
+                    .img-bottom {
+                        position: absolute !important;
+                        width: 35% !important;
+                        aspect-ratio: 373 / 248;
+                        top: 4% !important;
+                        right: 4% !important;
+                        left: auto !important;
+                        bottom: auto !important;
+                        transform: none !important;
+                        z-index: 6;
+                        box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.08);
+                    }
+                }
+
+                .t-wrap {
+                    order: 2;
+                    position: absolute !important;
+                    bottom: 5%;
+                    left: 0;
+                    top: auto !important;
+                    transform: none !important;
+                    flex-direction: column !important;
+                    align-items: stretch !important;
+                    width: 100%;
+                    padding: 0 18vw !important;
+                    gap: 0.4rem !important;
+                    box-sizing: border-box;
+
+                    .main-txt:nth-of-type(1) {
+                        order: 2;
+                        writing-mode: horizontal-tb !important;
+                        text-align: right !important;
+                        letter-spacing: 0.08rem !important;
+                        word-spacing: 0.3rem !important;
+                        width: 100%;
+                    }
+
+                    .main-txt:nth-of-type(2) {
+                        order: 1;
+                        writing-mode: horizontal-tb !important;
+                        text-align: left !important;
+                        letter-spacing: 0.08rem !important;
+                        word-spacing: 0.3rem !important;
+                        width: 100%;
+                    }
+
+                    /* ▼ 모바일 전용 badge SVG */
+                    .badge {
+                        order: 3;
+                        align-self: flex-end !important;
+                        position: relative !important;
+                        writing-mode: horizontal-tb !important;
+                        left: auto !important;
+                        right: auto !important;
+                        bottom: auto !important;
+                        /* ▼ [조절 포인트] badge 너비 — SVG 배경이 이 크기 기준으로 렌더링됨
+                           텍스트가 잘릴 경우 가운데 vw 값(34vw)을 높이거나 최솟값(130px)을 키우세요
+                           예) clamp(150px, 40vw, 220px) */
+                        width: clamp(150px, 44vw, 190px) !important;
+                        height: auto !important;
+                        aspect-ratio: auto !important;
+                        mix-blend-mode: luminosity !important; 
+                        /* ▼ [조절 포인트] 내부 여백 — 텍스트와 SVG 테두리 사이 간격 */
+                        padding: 2rem 4rem !important;
+                        /* ▼ 공통 font-size(2.2rem~2.56rem)를 그대로 상속
+                           slide-3만 별도 크기 원하면 아래 주석 해제 후 수정
+                           font-size: clamp(2.2rem, 5.5vw, 2.56rem) !important; */
+                        margin-top: 0.8rem !important;
+                        border-radius: 999px;
+                        background-image: url('/img/m_badge3.svg') !important;
+                        background-size: 100% 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    /* 페이지네이션 버튼 */
+    .swiper-pagination-bullets {
+        bottom: 12vw !important;     
+        left: 12vw !important;        
+        width: auto !important;      
+        text-align: left !important; 
+        
+        .swiper-pagination-bullet {
+            width: clamp(24px, 6vw, 40px); 
+            height: 8px;
+            margin: 0 10px 0 0 !important; 
+        }
+        .swiper-pagination-bullet-active {
+            width: clamp(40px, 9vw, 70px); 
         }
     }
 }
