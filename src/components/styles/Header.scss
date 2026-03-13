@@ -87,6 +87,26 @@ header {
 
 /* 1024px 이하 태블릿 및 모바일 반응형 */
 @media (max-width: 1350px) {
+    
+    header {
+        height: 8rem; /* 헤더 전체 높이 살짝 축소 */
+        .inner {
+            padding: 0 3rem;
+
+            h1.tit a img {
+                width: 150px; /* 로고 크기 축소 */
+                transition: width 0.3s;
+            }
+
+            .util-list {
+                gap: 1.5rem;
+                li .icon-link {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+    }
     header .inner {
         padding: 0 2rem;
 

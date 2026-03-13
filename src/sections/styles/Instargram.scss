@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 100%;
     margin: 0 auto; 
-    padding-top: 10rem;
+    padding-top: clamp(5rem, 8vw, 10rem);
     padding-left: 2rem;
     padding-right: 2rem;
     

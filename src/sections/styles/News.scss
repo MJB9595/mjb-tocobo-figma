@@ -1,19 +1,24 @@
 .news-wrap {
   width: 100%;
   background-color: #FEFEF2; 
-  
+  /* 데스크톱에서는 위아래 패딩으로 여유 공간 확보 */
   padding: clamp(10rem, 8vw, 15rem) 0; 
-  
   overflow: hidden; 
+  
+  /* 나중에 1024px 이하에서 높이를 고정했을 때, 내부 콘텐츠가 세로 중앙에 오도록 flex 추가 */
+  display: flex;
+  align-items: center;
 
   .news-inner {
     max-width: 1500px;
     margin: 0 auto;
+    width: 100%; /* flex 부모 안에서 꽉 차게 */
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 4rem;
     padding: 0 4rem;
+    transition: gap 0.5s ease, padding 0.5s ease;
 
     .left-visuals {
       width: 50%;
@@ -22,55 +27,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: width 0.5s ease;
 
-      img {
-        position: absolute;
-        height: auto;
-      }
-
-      /* 2. 배경 붓터치 잘림 해결 및 크기/위치 조정 */
-      .bg-brush {
-        width: 80%; /* 화면 왼쪽으로 확 뻗어나가도록 엄청 크게 키움 */
-        left: -55%;  /* 왼쪽으로 쑥 밀어냄 */
-        top: 30%;
-        transform: translateY(-50%);
-        z-index: 1;
-        opacity: 0.9;
-      }
-
-      /* 3. 밝은 병 (뒤쪽) */
-      .bottle-light {
-        width: 22%; 
-        left: 18%; /* 왼쪽으로 배치 */
-        top: 10%; /* 살짝 아래로 */
-        z-index: 2;
-        filter: blur(1.5px); /* 뒤에 있는 느낌을 위해 블러 살짝 강화 */
-      }
-
-      /* 4. 어두운 병 (앞쪽 메인) */
-      .bottle-dark {
-        width: 25%; 
-        left: 36%; /* 중앙에서 살짝 우측으로 */
-        top: 2%;  /* 시원하게 위쪽으로 뻗도록 */
-        z-index: 3;
-      }
-
-      /* 5. 쌀 (어두운 병 우측 하단) */
-      .rice {
-        width: 50%; 
-        bottom: 5%; /* 바닥에 착 붙게 */
-        left: 50%;  /* 어두운 병을 살짝 덮으면서 우측으로 퍼지게 */
-        z-index: 4;
-      }
+      img { position: absolute; height: auto; }
+      .bg-brush { width: 80%; left: -55%; top: 30%; transform: translateY(-50%); z-index: 1; opacity: 0.9; }
+      .bottle-light { width: 22%; left: 18%; top: 10%; z-index: 2; filter: blur(1.5px); }
+      .bottle-dark { width: 25%; left: 36%; top: 2%; z-index: 3; }
+      .rice { width: 50%; bottom: 5%; left: 50%; z-index: 4; }
     }
 
-    /* =================================
-       우측 슬라이더 및 텍스트 (이전과 동일)
-    ================================= */
     .right-slider-wrap {
       width: 45%;
       position: relative;
       padding: 0 6rem; 
+      transition: width 0.5s ease, padding 0.5s ease;
 
       .news-text-slider {
         .text-content {
@@ -129,49 +99,42 @@
         &.swiper-button-disabled { opacity: 0.1; cursor: auto; }
       }
 
-      .btn-prev {
-        left: 0;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='1.2' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E");
-      }
+      .btn-prev { left: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='1.2' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E"); }
+      .btn-next { right: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='1.2' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E"); }
+    }
+  }
+}
 
-      .btn-next {
-        right: 0;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='1.2' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+/* =========================================
+   1024px 이하 태블릿 및 모바일 반응형
+   (반드시 최상위 괄호 바깥에 위치해야 합니다!)
+========================================= */
+@media (max-width: 1024px) {
+  .news-wrap {
+    /* 기존의 뚱뚱했던 패딩을 없애고, Hero 섹션처럼 뷰포트 너비(vw)에 비례하는 높이로 꽉 묶어줍니다 */
+    padding: 0;
+    /* 텍스트 내용이 Hero보다 조금 많기 때문에 Hero(35vw)보다 살짝 여유를 준 40vw로 설정했습니다 */
+    height: clamp(300px, 40vw, 480px);
+
+    .news-inner {
+      padding: 0 4rem;
+      gap: 3rem;
+        
+      .left-visuals { 
+        width: 48%; 
+      }
+      
+      .right-slider-wrap {
+        width: 52%;
+        padding: 0 3rem;
+            
+        .news-text-slider .text-content {
+          /* 높이가 낮아진 만큼, 글자가 영역을 탈출하지 않도록 크기와 마진을 압축합니다 */
+          .tit { font-size: clamp(2.4rem, 3.5vw, 3.6rem); margin-bottom: 1.5rem; }
+          .sub-tit { font-size: clamp(1.4rem, 2vw, 1.6rem); margin-bottom: 2rem; }
+          .desc { font-size: clamp(1.2rem, 1.5vw, 1.4rem); margin-bottom: 3rem; line-height: 1.6; }
+        }
       }
     }
   }
-
-  @media (max-width: 1024px) {
-    .news-wrap .news-inner {
-        padding: 0 2rem;
-        gap: 3rem;
-        
-        .left-visuals { width: 45%; }
-        .right-slider-wrap {
-            width: 55%;
-            padding: 0 3rem;
-            
-            .news-text-slider .text-content {
-                .tit { font-size: 3rem; }
-                .sub-tit { font-size: 1.6rem; }
-                .desc { font-size: 1.3rem; margin-bottom: 3rem; }
-            }
-        }
-    }
-}
-
-.news-wrap .news-inner {
-    transition: gap 0.5s ease, padding 0.5s ease;
-    
-    .left-visuals {
-        width: 50%;
-        transition: width 0.5s ease; /* 추가 */
-        /* ... 기존 코드 ... */
-    }
-    .right-slider-wrap {
-        width: 45%;
-        transition: width 0.5s ease, padding 0.5s ease; /* 추가 */
-        /* ... 기존 코드 ... */
-    }
-}
 }

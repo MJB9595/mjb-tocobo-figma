@@ -18,11 +18,11 @@ const Instargram = () => {
           <ul className="instar-list">
             <li>
               <Swiper
-              slidesPerView={3}
+              slidesPerView={6}
               spaceBetween={10}
-              breakpoints={{
-                1024: { slidesPerView: 6 }
-              }}
+              // breakpoints={{
+              //   1024: { slidesPerView: 6 }
+              // }}
               className='insta-slider'
               >
                 {insta.map((is)=>(

@@ -133,15 +133,16 @@
 
   @media (max-width: 1024px) {
     .follow-wrap .follow-inner {
+        flex-direction: row; /* 시안처럼 좌우 나란히 유지 */
         gap: 3rem;
-        padding: 0 2rem;
+        padding: 0 4rem;
         
-        .left-collage { width: 50%; }
+        .left-collage { width: 55%; }
         .right-text {
-            width: 50%;
-            .tit { font-size: 3rem; }
-            .desc { font-size: 1.3rem; margin-bottom: 2rem; }
-            .btn-meet { padding: 1rem 2.5rem; }
+            width: 45%;
+            .tit { font-size: 3.6rem; margin-bottom: 2rem; }
+            .desc { font-size: 1.5rem; margin-bottom: 2.5rem; line-height: 1.6; }
+            .btn-meet { padding: 1.2rem 3rem; font-size: 1.3rem; }
         }
     }
 }

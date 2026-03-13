@@ -1,6 +1,6 @@
 footer {
     border-top: .1rem solid var(--primary);
-    padding: 7rem 0 5rem;
+    padding: clamp(4rem, 6vw, 7rem) 0 clamp(3rem, 4vw, 5rem);
     
     .footer-inner {
         display: flex;
@@ -116,13 +116,13 @@ footer {
             display: none; 
         }
     }
-} /* <--- 중요: 여기서 데스크탑 footer 스타일이 완전히 닫힙니다. */
+} 
 
 
 /* =========================================
    1024px 이하 반응형 풋터 (여기가 밖으로 나와야 합니다!)
 ========================================= */
-@media (max-width: 1024px) {
+@media (max-width: 1142px) {
     footer {
         padding: 5rem 2rem;
         
