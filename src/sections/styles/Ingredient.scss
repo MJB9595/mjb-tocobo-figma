@@ -145,9 +145,126 @@
         }
       }
 
-      /* 모바일로 갈수록 중앙 텍스트 공간 확보를 위해 좌우 영역 비율 약간 조정 */
       .left-images { width: 30%; }
       .right-images { width: 40%; }
+    }
+  }
+}
+
+/* =========================================
+   780px 이하 모바일 전면 개편 (Ingredient 섹션)
+========================================= */
+@media (max-width: 780px) {
+  .ingredient-wrap {
+    height: auto !important; 
+    padding: 10rem 0; 
+    
+    .bg-band {
+        top: 55%;
+        left: 0%;
+        height: 25%;
+    }
+
+    .ingredient-content {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto; 
+      
+      /* 🔥 1. 위 이미지 영역과 아래 텍스트 영역 사이의 간격을 기존 6rem에서 절반인 3rem으로 축소 🔥 */
+      gap: 3rem; 
+      padding: 0 6vw;
+
+      /* ========== 1. 이미지 겹침 영역 (기존 코드 유지) ========== */
+      .right-images {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1; 
+        z-index: 5;
+        
+        .img-bg-texture {
+          width: 90%;
+          height: auto;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          bottom: auto;
+          right: auto;
+        }
+
+        .img-bottle {
+          height: 65%; 
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .left-images {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        position: relative; 
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        pointer-events: none; 
+
+        .img-red {
+          width: 25%;
+          position: absolute;
+          top: 10%;
+          right: 0%;
+          left: auto;
+          bottom: auto;
+        }
+
+        .img-nuruk {
+          width: 30%;
+          position: absolute;
+          bottom: 5%;
+          left: 0%;
+          top: auto;
+          right: auto;
+        }
+      }
+
+      /* ========== 2. 텍스트 가로 정렬 영역 (Grid 2번 칸) ========== */
+      .center-text {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        width: 100%;
+        top: 0;
+        
+        display: grid;
+        grid-template-columns: max-content max-content; 
+        
+        /* 글씨가 커진 만큼 줄 간격(row-gap)도 살짝 여유있게 늘림 */
+        row-gap: 1.8rem; 
+        column-gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+
+        .t-block {
+          display: contents; 
+          
+          p {
+            writing-mode: horizontal-tb !important; 
+            
+            /* 🔥 2. 글자 크기를 기존 대비 1.6배 뻥튀기 🔥 */
+            font-size: clamp(4.1rem, 11vw, 5.7rem) !important;
+            letter-spacing: 0.1rem !important;
+          }
+        }
+
+        /* 🔥 3. 상단 글자(1번째 줄)를 좌측으로 20% 이동시킴 🔥 */
+        .t-top p:nth-of-type(1) { grid-row: 1; grid-column: 1; justify-self: end; transform: translateX(-20%); }
+        .t-bottom p:nth-of-type(1) { grid-row: 1; grid-column: 2; justify-self: start; transform: translateX(-20%); }
+        
+        /* 🔥 3. 하단 글자(2번째 줄)를 우측으로 20% 이동시킴 🔥 */
+        .t-top p:nth-of-type(2) { grid-row: 2; grid-column: 1; justify-self: end; transform: translateX(20%); }
+        .t-bottom p:nth-of-type(2) { grid-row: 2; grid-column: 2; justify-self: start; transform: translateX(20%); }
+      }
     }
   }
 }

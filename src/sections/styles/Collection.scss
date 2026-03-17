@@ -3,6 +3,7 @@
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
+    transition: padding 0.5s ease, max-width 0.5s ease;
 
     // 타이틀
     .t-wrap {
@@ -30,6 +31,14 @@
         padding: 8rem 0; 
         overflow: visible;
 
+        /* 🔥 데스크톱/태블릿에서는 페이지네이션 숨김 🔥 */
+        .swiper-pagination-bullets {
+            display: none;
+        }
+        padding: 8rem 0; 
+        /* 데스크톱에서는 겹친 이미지를 보여주기 위해 visible 유지 */
+        overflow: visible;
+
         .swiper-slide[data-swiper-slide-index="0"] .tasting-card {
             &::before { background-image: url('/img/card-tear-top-1.png'); }
             &::after  { background-image: url('/img/card-tear-bottom-1.png'); }
@@ -51,6 +60,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        transition: padding 0.5s ease;
 
         // 찢어진 종이 상단 공통적용
         &::before {
@@ -128,7 +138,7 @@
         }
     }
 
-    //네비 화살표
+    //네비 화살표 기본 세팅
     .prev, .next {
         position: absolute;
         top: 60%;
@@ -145,7 +155,7 @@
 
         &:hover {
             opacity: 1;
-            transform: translateY(-50%) scale(1.1); //호버효과
+            transform: translateY(-50%) scale(1.1); 
         }
 
         &.swiper-button-disabled {
@@ -154,19 +164,21 @@
         }
     }
 
-    // //화살표 SVG 경로
-    // .prev {
-    //     left: -8rem;
-    //     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a6d46' stroke-width='1.2' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E");
-    // }
+    // 화살표 SVG 
+    .prev {
+        left: -8rem;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a6d46' stroke-width='1.2' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E");
+    }
 
-    // .next {
-    //     right: -8rem;
-    //     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a6d46' stroke-width='1.2' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
-    // }
+    .next {
+        right: -8rem;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a6d46' stroke-width='1.2' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+    }
 
+    /* =========================================
+       1024px 이하 태블릿 반응형
+    ========================================= */
     @media (max-width: 1024px) {
-    .collection-inner {
         padding: 6rem 4rem;
         
         .tasting-card {
@@ -178,16 +190,92 @@
             }
         }
         
-        .prev { left: -1; width: 4.5rem; }
-        .next { right: -1; width: 4.5rem; }
+        .prev { left: -1rem; width: 4.5rem; }
+        .next { right: -1rem; width: 4.5rem; }
     }
-}
 
-.collection-inner {
-    transition: padding 0.5s ease, max-width 0.5s ease;
-    
-    .tasting-card {
-        transition: padding 0.5s ease;
+/* =========================================
+       780px 이하 모바일 전면 개편 (Tasting Note)
+    ========================================= */
+    @media (max-width: 780px) {
+        /* 상하단 여백 */
+        padding: 6rem 0; 
+        
+        .t-wrap {
+            .tit { font-size: clamp(4rem, 8vw, 6.2rem); margin-bottom: 1.5rem; }
+            .txt { font-size: clamp(1.6rem, 4vw, 2.2rem); }
+        }
+
+        .collection-slider {
+            width: 75% !important;
+            margin: 0 auto;
+            
+            /* 🔥 하단 패딩을 10rem으로 늘려 페이지네이션이 들어갈 넉넉한 공간을 확보합니다 🔥 */
+            padding: 6rem 0 10rem !important; 
+            overflow: hidden !important; 
+
+            /* 🔥 모바일 전용 페이지네이션 스타일 (Hero 섹션과 동일 + 중앙 정렬) 🔥 */
+            .swiper-pagination-bullets {
+                display: block !important;
+                bottom: 3rem !important;
+                left: 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+
+                .swiper-pagination-bullet {
+                    width: clamp(24px, 6vw, 40px); 
+                    height: 8px;
+                    border-radius: 0;
+                    background-color: #999;
+                    opacity: 0.5;
+                    transition: all 0.3s;
+                    margin: 0 5px !important; /* 중앙 정렬을 위해 양옆 마진으로 세팅 */
+                }
+                .swiper-pagination-bullet-active {
+                    background-color: #e5c158;
+                    width: clamp(40px, 9vw, 70px); 
+                    opacity: 1;
+                }
+            }
+        }
+
+        .tasting-card {
+            /* 카드가 커진 만큼, 텍스트가 숨을 쉴 수 있게 내부 여백을 살짝 늘려줍니다 */
+            padding: 4rem 2rem 2rem;
+
+            /* 🔥 카드 위아래 찢어진 종이 장식도 비율에 맞춰 살짝 키움 (40px -> 50px) 🔥 */
+            &::before {
+                height: 50px !important;
+                top: -50px !important;
+            }
+            &::after {
+                height: 50px !important;
+                bottom: -50px !important;
+            }
+
+            .card-header {
+                margin-bottom: 3rem;
+                
+                .quote { 
+                    font-size: clamp(2rem, 5vw, 2.6rem) !important; 
+                    margin-bottom: 1.5rem; 
+                }
+                .author { 
+                    font-size: clamp(1.4rem, 3vw, 1.8rem) !important; 
+                }
+            }
+        }
+
+        /* 화살표 크기 유지 */
+        .prev, .next {
+            top: 55%; 
+            width: clamp(3rem, 8vw, 4.5rem);
+            height: clamp(3rem, 8vw, 4.5rem);
+            opacity: 0.8; 
+        }
+        
+        /* 🔥 카드가 75%를 차지하여 좁아진 양옆 여백에 맞춰 화살표 위치를 당겨옵니다 🔥 */
+        .prev { left: 4vw; }
+        .next { right: 4vw; }
     }
-}
-}
+} /* <--- .collection-inner 닫는 괄호 (파일 맨 끝) */

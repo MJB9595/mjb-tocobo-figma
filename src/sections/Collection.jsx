@@ -3,7 +3,10 @@ import { collectionData } from '../util/collection'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+/* 🔥 페이지네이션 CSS 추가 🔥 */
+import 'swiper/css/pagination'; 
+/* 🔥 Pagination 모듈 추가 🔥 */
+import { Navigation, Pagination } from 'swiper/modules'; 
 import './styles/Collection.scss'
 
 const Collection = () => {
@@ -30,10 +33,19 @@ const Collection = () => {
       </div>
 
       <Swiper
-        slidesPerView={3}
-        spaceBetween={40}
+        slidesPerView={1}
+        spaceBetween={20}
+        breakpoints={{
+          781: {
+            slidesPerView: 3,
+            spaceBetween: 40
+          }
+        }}
         loop={true}
-        modules={[Navigation]}
+        /* 🔥 페이지네이션 활성화 🔥 */
+        pagination={{ clickable: true }} 
+        /* 🔥 modules 배열에 Pagination 추가 🔥 */
+        modules={[Navigation, Pagination]} 
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         className="collection-slider"
       >

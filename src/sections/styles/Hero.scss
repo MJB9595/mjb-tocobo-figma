@@ -451,7 +451,7 @@
 
                 .main-txt {
                     writing-mode: horizontal-tb; 
-                    font-size: clamp(2.8rem, 8vw, 3.8rem); 
+                    font-size: clamp(3.8rem, 9vw, 5.0rem); 
                     letter-spacing: 0.1rem;
                     word-spacing: 0.5rem;
                     text-align: left; 
@@ -482,6 +482,7 @@
             /* ── slide-1 모바일 ── */
             &.slide-1 {
                 .t-wrap {
+                    width: 100vw;
                     top: 10% !important;
                     left: auto !important;
                     align-items: stretch; 
@@ -568,7 +569,7 @@
                 .right-images {
                     order: 1;
                     position: absolute !important;
-                    top: 45%;
+                    top: 40%;
                     left: 40%;
                     transform: translateX(-50%);
                     width: 62% !important;
@@ -593,7 +594,7 @@
                     transform: scale(1.3);
                     width: 100%;
                     height: 100%;
-                    top: 25%;
+                    top: 20%;
                     left: -15%;
                     z-index: 5;
                     order: 0;
@@ -631,12 +632,12 @@
                     order: 2;
                     position: absolute !important;
                     bottom: 5%;
-                    left: 0;
+                    left: -10%;
                     top: auto !important;
                     transform: none !important;
                     flex-direction: column !important;
                     align-items: stretch !important;
-                    width: 100%;
+                    width: 110vw;
                     padding: 0 18vw !important;
                     gap: 0.4rem !important;
                     box-sizing: border-box;
