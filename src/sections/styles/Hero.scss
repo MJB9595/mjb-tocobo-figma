@@ -1,5 +1,6 @@
 .hero-wrap {
   width: 100%;
+  max-width: 100vw;
   overflow: hidden;
 
   height: clamp(380px, 55vw, 100vh);
@@ -12,6 +13,7 @@
   .hero-slider {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 
     .swiper-slide {
       overflow: hidden;
@@ -166,7 +168,6 @@
 
         &.slide-2 {
           .t-wrap .main-txt { color: #fff; }
-          /* ▼ 수정: font-size를 기존 대비 약 20% 축소 (2vw→1.6vw, 2.7rem→2.16rem) */
           .t-wrap .badge {
             font-size: clamp(1.28rem, 1.6vw, 2.16rem);
             bottom: -20%;
@@ -241,8 +242,8 @@
             color: #7B7B7B;
           }
           .t-wrap .badge {
-            width: clamp(44px, 4.5vw, 80px);
-            height: clamp(110px, 11.5vw, 196px);
+            width: 65px !important;  
+            height: clamp(130px, 18vw, 230px);
             font-size: clamp(1.3rem, 1.6vw, 2.4rem);
             bottom: -8%;
             left: -85%;
@@ -251,6 +252,7 @@
             word-spacing: 0.5rem;
             overflow: visible;
             white-space: nowrap;
+            aspect-ratio: unset !important;
           }
 
           .left-images {
@@ -317,8 +319,8 @@
 }
 
 .swiper-pagination-bullets {
-  bottom: 60px !important;
-  left: -5% !important;
+  bottom: 5% !important;
+  left: 5% !important;
   .swiper-pagination-bullet {
     width: 53px;
     height: 8px;
@@ -334,9 +336,6 @@
   }
 }
 
-/* =========================================
-   1024px 이하 태블릿 및 모바일 반응형 (Hero 섹션)
-========================================= */
 @media (max-width: 1111px) {
     .hero-wrap {
         .hero-slider .swiper-slide .slide-content {
@@ -385,8 +384,10 @@
             /* 뱃지 위치 */
             &.slide-1 .t-wrap .badge { left: 10%; bottom: -30%; }
             &.slide-2 .t-wrap .badge { right: -15%; bottom: -15%; }
-            &.slide-3 .t-wrap .badge { left: -80%; bottom: 0;  
-            width: clamp(40px, 4.5vh, 60px) !important;}
+            &.slide-3 .t-wrap .badge { left: -90%; bottom: 0;  
+            width: 55px !important;        
+            height: clamp(110px, 16vw, 250px) !important;
+            aspect-ratio: unset !important;}
         }
     }
 
@@ -407,9 +408,6 @@
     }
 }
 
-/* =========================================
-   780px 이하 모바일 전면 개편 (Hero 섹션)
-========================================= */
 @media (max-width: 780px) {
     .hero-wrap {
         height: clamp(550px, 140vw, 850px);
@@ -461,17 +459,13 @@
                     }
                 }
 
-                /* ▼ 모바일 공통: badge SVG·스타일 초기화 후 가로형 pill로 전환 */
                 .badge {
                     position: relative; 
                     left: auto !important; right: auto !important; bottom: auto !important;
                     writing-mode: horizontal-tb;
-                    /* 데스크탑 세로형 SVG 제거 — 각 슬라이드에서 모바일 SVG로 덮어씀 */
                     background-image: none !important;
                     margin-top: 1rem;
                     align-self: flex-end;
-                    /* ▼ 모바일 공통 badge 폰트: 1111px 기준 1.6rem × 1.6배
-                       조절 시 clamp(최솟값, 뷰포트비례, 최댓값) 형식으로 수정 */
                     font-size: clamp(2.2rem, 5.5vw, 2.56rem) !important;
                     width: clamp(100px, 28vw, 150px) !important;
                     height: auto !important;
@@ -479,24 +473,34 @@
                 }
             }
 
-            /* ── slide-1 모바일 ── */
             &.slide-1 {
                 .t-wrap {
                     width: 100vw;
                     top: 10% !important;
                     left: auto !important;
                     align-items: stretch; 
-                    .main-txt { text-align: left; } 
-                    .main-txt:nth-of-type(2) { text-align: right; } 
-                    /* ▼ 모바일 전용 badge SVG */
+                    .main-txt:nth-of-type(1) { 
+                        text-align: left; 
+                        
+                        position: relative;
+                        top: 0;
+                        left: -10%;
+                    } 
+                    .main-txt:nth-of-type(2) { 
+                        text-align: right; 
+                        
+                        position: relative;
+                        top: 0;
+                        right: 0;
+                    }
                     .badge {
+                        width: clamp(100px, 33vw, 150px) !important;
                         align-self: flex-end;
                         background-image: url('/img/m_badge1.svg') !important;
                     }
                 }
             }
 
-            /* ── slide-2 모바일 ── */
             &.slide-2 {
                 .right-images { 
                     position: relative; 
@@ -530,7 +534,7 @@
                     .img-bottom {
                         width: 45%;
                         position: absolute;
-                        bottom: 10%;
+                        top: 60%;
                         right: -30%;
                         transform: none;
                         box-shadow: none;
@@ -546,21 +550,24 @@
                     .main-txt:nth-of-type(1) { 
                         order: 2; 
                         text-align: right; 
+                        position: relative;
+                        left: 0%;
                     }
                     .main-txt:nth-of-type(2) { 
                         order: 1; 
                         text-align: left; 
+                        position: relative;
+                        left: -20%;
                     }
-                    /* ▼ 모바일 전용 badge SVG */
                     .badge { 
                         order: 3; 
+                        width: clamp(100px, 38vw, 150px) !important;
                         align-self: flex-end;
                         background-image: url('/img/m_badge2.svg') !important;
                     }
                 }
             }
 
-            /* ── slide-3 모바일 ── */
             &.slide-3 {
                 padding: 0 !important;
                 flex-direction: column;
@@ -660,29 +667,27 @@
                         width: 100%;
                     }
 
-                    /* ▼ 모바일 전용 badge SVG */
                     .badge {
                         order: 3;
                         align-self: flex-end !important;
                         position: relative !important;
+
                         writing-mode: horizontal-tb !important;
-                        left: auto !important;
+
+                        left: 10% !important;
                         right: auto !important;
                         bottom: auto !important;
-                        /* ▼ [조절 포인트] badge 너비 — SVG 배경이 이 크기 기준으로 렌더링됨
-                           텍스트가 잘릴 경우 가운데 vw 값(34vw)을 높이거나 최솟값(130px)을 키우세요
-                           예) clamp(150px, 40vw, 220px) */
+
                         width: clamp(150px, 44vw, 190px) !important;
                         height: auto !important;
+
                         aspect-ratio: auto !important;
                         mix-blend-mode: luminosity !important; 
-                        /* ▼ [조절 포인트] 내부 여백 — 텍스트와 SVG 테두리 사이 간격 */
+
                         padding: 2rem 4rem !important;
-                        /* ▼ 공통 font-size(2.2rem~2.56rem)를 그대로 상속
-                           slide-3만 별도 크기 원하면 아래 주석 해제 후 수정
-                           font-size: clamp(2.2rem, 5.5vw, 2.56rem) !important; */
                         margin-top: 0.8rem !important;
                         border-radius: 999px;
+
                         background-image: url('/img/m_badge3.svg') !important;
                         background-size: 100% 100%;
                     }
@@ -691,7 +696,6 @@
         }
     }
 
-    /* 페이지네이션 버튼 */
     .swiper-pagination-bullets {
         bottom: 12vw !important;     
         left: 12vw !important;        
@@ -706,5 +710,29 @@
         .swiper-pagination-bullet-active {
             width: clamp(40px, 9vw, 70px); 
         }
+    }
+}
+@media (max-width: 480px) {
+    .hero-wrap .hero-slider .swiper-slide .slide-content {
+
+        &.slide-2 {
+          .left-images .img-bottom {
+            top: 60% !important;
+          }
+
+            .t-wrap {
+                position: relative !important;
+
+                .badge {
+                    position: absolute !important;
+
+                    bottom: -70% !important;
+                    right: 5% !important;
+                    
+                    width: clamp(100px, 38vw, 150px) !important;
+                    
+                }
+            }
+          }
     }
 }

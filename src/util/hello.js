@@ -2,10 +2,10 @@ const img = (path) => `/img/${path}`;
 export const helloData = {
 
   media: {
-    type: "image",                     // "image" | "video"
-    src: img("tocobosun_final_s.gif"),   // public 폴더 기준
+    type: "image",
+    src: img("tocobosun_final_s.gif"),
     alt: "Pink square demo image",
-    radius: 24                         // 이미지 둥근 모서리(px)
+    radius: 24
   },
 
   eyebrow: "Hello❤️ We are TOCOBO!",

@@ -1,11 +1,10 @@
 .FixedTopBtn {
     position: fixed;
-    right: 2rem;
+    right: 2rem !important;
     bottom: 2rem;
     z-index: 5;
     text-align: center;
 
-    // background-color: var(--primary);
     >* {
         display: block;
     }
@@ -18,15 +17,7 @@
         cursor: pointer;
         font-size: 0;
     }
-    // .talk-btn {
-    //     width: 5.6rem;
-    //     height: 5.6rem;
-    //     background: url(/img/icon_talk.svg) no-repeat center/contain;
-    //     margin: 1rem 0;
-    //     font-size: 1.5rem;
-    //     color: var(--bg);
-    //     align-content: center;
-    // }
+
     p{
         margin: 1rem 0;
         color:var(--primary);

@@ -16,7 +16,6 @@
     gap: clamp(4rem, 6vw, 8rem);
     padding: 0 clamp(2rem, 4vw, 4rem);
     
-    /* 엉켜있던 transition 코드를 부모 안으로 깔끔하게 통합했습니다 */
     transition: gap 0.5s ease, padding 0.5s ease;
 
     .left-collage {
@@ -135,9 +134,6 @@
     }
   }
 
-  /* =========================================
-     1024px 이하 태블릿 반응형
-  ========================================= */
   @media (max-width: 1024px) {
     .follow-inner {
         flex-direction: row; 
@@ -154,14 +150,10 @@
     }
   }
 
-/* =========================================
-     780px 이하 모바일 전면 개편 (Follow 섹션)
-  ========================================= */
   @media (max-width: 780px) {
     .follow-inner {
       flex-direction: column; 
       
-      /* 위아래 간격도 1.7배(약 8.5rem) 수준으로 자연스럽게 맞췄습니다 */
       gap: clamp(5rem, 12vw, 8.5rem); 
       padding: 0 4vw;
       
@@ -172,31 +164,25 @@
       .right-text {
         width: 100%; 
         
-        /* 🔥 아래 영역의 글자, 버튼 크기를 1.7배로 세밀하게 조정 🔥 */
         .tit { 
-            /* 기존 3.6rem -> 약 6.1rem (1.7배) */
             font-size: clamp(4rem, 8vw, 6.2rem); 
             margin-bottom: 2.5rem; 
         }
         
         .desc { 
-            /* 기존 1.5rem -> 약 2.6rem (1.7배) */
             font-size: clamp(1.8rem, 4.5vw, 2.6rem); 
             margin-bottom: 4rem; 
             line-height: 1.6; 
         }
         
         .btn-meet { 
-            /* 내부 여백(padding) 1.7배: 기존 1.2rem 3rem -> 약 2rem 5.1rem */
             padding: clamp(1.6rem, 2.5vw, 2rem) clamp(3.5rem, 6vw, 5.1rem); 
             
-            /* 버튼 안의 글자 크기 1.7배: 기존 1.3rem -> 약 2.2rem */
             font-size: clamp(1.6rem, 3.5vw, 2.2rem); 
             
-            /* 버튼 크기에 맞춘 둥글기 조절 */
             border-radius: 50px; 
         }
       }
     }
   }
-} /* <--- .follow-wrap 닫는 괄호 */
+}

@@ -1,0 +1,11 @@
+.util-list {
+  @media (max-width: 780px) {
+    li {
+      display: none !important; 
+
+      &.util-cart {
+        display: block !important; 
+      }
+    }
+  }
+}

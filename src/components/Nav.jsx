@@ -15,7 +15,6 @@ const Nav = ({ setIsMenuOpen }) => {
                     onClick={(e)=>{
                         e.preventDefault()
                         scrollTo(nav.id)
-                        // 메뉴 이동 후 모바일 메뉴 창 닫기
                         if(setIsMenuOpen) setIsMenuOpen(false);
                     }}
                     >

@@ -1,5 +1,6 @@
 import React from 'react'
 import { headerData } from '../util/header'
+import './styles/Util.scss'
 
 const Util = () => {
 
@@ -7,7 +8,7 @@ const Util = () => {
   return (
     <ul className='util-list'>
       {utilData.map((u) => (
-        <li key={u.id}>
+        <li key={u.id} className={`util-${u.id}`}>
           <a 
           href={u.href}
           className='icon-link'

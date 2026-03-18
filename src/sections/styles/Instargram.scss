@@ -32,8 +32,10 @@
         .insta-slider {
             width: 100%;
             .swiper-slide {
-                width: 200px;
-                height: 200px; 
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1 / 1; 
+
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -47,10 +49,38 @@
             }
         }
     }
-    .instar-list .insta-slider .swiper-slide {
-        /* 고정 px 대신 100%로 두고 스와이퍼가 비율을 잡게 함 */
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1; 
+}
+
+@media (max-width: 780px) {
+    .instar-inner {
+        padding-left: 4vw;
+        padding-right: 4vw;
+        padding-bottom: 5rem; 
+
+        .instar-list {
+            height: auto !important;
+
+            .insta-slider {
+                height: auto !important; 
+
+                .swiper-wrapper {
+                    display: grid !important;
+                    grid-template-columns: repeat(2, 1fr) !important; 
+                    gap: 10px !important;
+                    transform: none !important; 
+                    width: 100% !important;
+                    
+                    height: auto !important; 
+                }
+
+                .swiper-slide {
+                    width: 100% !important; 
+                    height: auto !important; 
+                    aspect-ratio: 1 / 1 !important; 
+                    
+                    margin: 0 !important; 
+                }
+            }
+        }
     }
 }

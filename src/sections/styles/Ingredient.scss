@@ -9,13 +9,13 @@
   position: relative;
   transition: height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-  /* 뒤를 가로지르는 텍스처 띠 (필요시 배경 이미지 삽입) */
+  // 뒤를 가로지르는 텍스처 띠 
   .bg-band {
     position: absolute;
     top: 50%;
     left: 10%;
     width: 100%;
-    height: 18%; // 이미지 비율에 맞춘 띠 높이
+    height: 18%; 
     transform: translateY(-50%);
     background-color: #f2f0e8; 
     background-image: url('/img/ing_band_pattern.png'); 
@@ -34,7 +34,6 @@
     box-sizing: border-box;
     z-index: 1;
 
-    /* ========== 1. 왼쪽 이미지 영역 ========== */
     .left-images {
       position: relative;
       width: 30%;
@@ -61,20 +60,19 @@
       }
     }
 
-    /* ========== 2. 중앙 텍스트 영역 ========== */
     .center-text {
       display: flex;
       flex-direction: column;
-      gap: clamp(2rem, 5vw, 6rem); /* 상단 단락과 하단 단락 사이 간격 */
+      gap: clamp(2rem, 5vw, 6rem);
       align-items: center;
       flex-shrink: 0;
       position: relative;
-      top: -2%; // 텍스트 덩어리 살짝 위로 교정
+      top: -2%;
 
       .t-block {
         display: flex;
-        flex-direction: row-reverse; // 우측에서 좌측으로 읽히도록 배치
-        gap: clamp(1rem, 2vw, 2.5rem); // 글자 줄 사이 간격
+        flex-direction: row-reverse;
+        gap: clamp(1rem, 2vw, 2.5rem);
 
         p {
           writing-mode: vertical-rl;
@@ -89,7 +87,6 @@
       }
     }
 
-    /* ========== 3. 오른쪽 메인 오브젝트 영역 ========== */
     .right-images {
       position: relative;
       width: 42%;
@@ -109,11 +106,10 @@
       }
 
       .img-bottle {
-        height: 75%; /* 뒷배경 텍스처보다 위아래로 튀어나오도록 크기 설정 */
+        height: 75%;
         object-fit: contain;
         position: absolute;
         z-index: 2;
-        /* 병 위치 미세조정 (필요 시 수정) */
         top: 31%;
         left: 40%;
         transform: translate(-50%, -50%);
@@ -122,9 +118,6 @@
   }
 }
 
-/* =========================================
-   1024px 이하 태블릿 및 모바일 반응형
-========================================= */
 @media (max-width: 1024px) {
   .ingredient-wrap {
     height: clamp(400px, 50vw, 550px);
@@ -151,9 +144,6 @@
   }
 }
 
-/* =========================================
-   780px 이하 모바일 전면 개편 (Ingredient 섹션)
-========================================= */
 @media (max-width: 780px) {
   .ingredient-wrap {
     height: auto !important; 
@@ -170,11 +160,9 @@
       grid-template-columns: 100%;
       grid-template-rows: auto auto; 
       
-      /* 🔥 1. 위 이미지 영역과 아래 텍스트 영역 사이의 간격을 기존 6rem에서 절반인 3rem으로 축소 🔥 */
       gap: 3rem; 
       padding: 0 6vw;
 
-      /* ========== 1. 이미지 겹침 영역 (기존 코드 유지) ========== */
       .right-images {
         grid-column: 1 / 2;
         grid-row: 1 / 2;
@@ -229,7 +217,6 @@
         }
       }
 
-      /* ========== 2. 텍스트 가로 정렬 영역 (Grid 2번 칸) ========== */
       .center-text {
         grid-column: 1 / 2;
         grid-row: 2 / 3;
@@ -239,7 +226,6 @@
         display: grid;
         grid-template-columns: max-content max-content; 
         
-        /* 글씨가 커진 만큼 줄 간격(row-gap)도 살짝 여유있게 늘림 */
         row-gap: 1.8rem; 
         column-gap: 1.5rem;
         justify-content: center;
@@ -251,19 +237,16 @@
           p {
             writing-mode: horizontal-tb !important; 
             
-            /* 🔥 2. 글자 크기를 기존 대비 1.6배 뻥튀기 🔥 */
             font-size: clamp(4.1rem, 11vw, 5.7rem) !important;
             letter-spacing: 0.1rem !important;
           }
         }
 
-        /* 🔥 3. 상단 글자(1번째 줄)를 좌측으로 20% 이동시킴 🔥 */
-        .t-top p:nth-of-type(1) { grid-row: 1; grid-column: 1; justify-self: end; transform: translateX(-20%); }
+        .t-top p:nth-of-type(1) { grid-row: 1; grid-column: 1; justify-self: end; transform: translateX(-40%); }
         .t-bottom p:nth-of-type(1) { grid-row: 1; grid-column: 2; justify-self: start; transform: translateX(-20%); }
         
-        /* 🔥 3. 하단 글자(2번째 줄)를 우측으로 20% 이동시킴 🔥 */
-        .t-top p:nth-of-type(2) { grid-row: 2; grid-column: 1; justify-self: end; transform: translateX(20%); }
-        .t-bottom p:nth-of-type(2) { grid-row: 2; grid-column: 2; justify-self: start; transform: translateX(20%); }
+        .t-top p:nth-of-type(2) { grid-row: 2; grid-column: 1; justify-self: end; transform: translateX(120%); }
+        .t-bottom p:nth-of-type(2) { grid-row: 2; grid-column: 2; justify-self: start; transform: translateX(180%); }
       }
     }
   }

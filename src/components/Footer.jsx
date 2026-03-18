@@ -10,7 +10,7 @@ import {
 import './styles/Footer.scss'
 
 const Footer = () => {
-  const [isCsOpen, setIsCsOpen] = useState(false); // 토글 상태
+  const [isCsOpen, setIsCsOpen] = useState(false);
 
   return (
     <footer>
@@ -58,7 +58,6 @@ const Footer = () => {
 
         <div className="right">
           <div className='cus-wrap'>
-            {/* 안전한 상태 업데이트 및 클릭 클래스 추가 */}
             <h4 
               className="toggle-title" 
               onClick={() => setIsCsOpen(prev => !prev)}

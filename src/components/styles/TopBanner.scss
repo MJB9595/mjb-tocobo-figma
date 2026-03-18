@@ -3,7 +3,9 @@
     background-color: var(--primary);
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow: hidden;
     height: 4rem;
     color: var(--bg);
     text-align: center;

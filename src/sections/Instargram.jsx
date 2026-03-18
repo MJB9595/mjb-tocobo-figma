@@ -18,27 +18,21 @@ const Instargram = () => {
           <ul className="instar-list">
             <li>
               <Swiper
-              slidesPerView={6}
-              spaceBetween={10}
-              // breakpoints={{
-              //   1024: { slidesPerView: 6 }
-              // }}
-              className='insta-slider'
+                slidesPerView={6}
+                spaceBetween={10}
+                className='insta-slider'
               >
                 {insta.map((is)=>(
-
                   <SwiperSlide
-                  style={{backgroundImage:`url(${is.image})`}}
-                  key={is.id}>
+                    style={{backgroundImage:`url(${is.image})`}}
+                    key={is.id}
+                  >
                     <a href={is.link} className='insta-link'>
                       {is.id}
                     </a>
-
                   </SwiperSlide>
-
                 ))}
               </Swiper>
-
             </li>
           </ul>
     </div>
