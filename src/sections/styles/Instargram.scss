@@ -1,0 +1,86 @@
+.instar-inner {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto; 
+    padding-top: clamp(5rem, 8vw, 10rem);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    
+    display: flex;
+    flex-direction: column;
+
+    .t-wrap {
+        width: 100%; 
+        
+        h2.tit {
+            color: var(--primary);
+        }
+        p.txt {
+            margin-top: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: rgb(0, 0, 0, 0.5);
+            font-family: 'SeoulHangang';
+            font-size: 2rem;
+        }
+    }
+
+    .instar-list {
+        width: 100%; 
+        margin-top: 20px;
+        position: relative;
+
+        .insta-slider {
+            width: 100%;
+            .swiper-slide {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1 / 1; 
+
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-color: #f0f0f0;
+
+                .insta-link {
+                    display: block;
+                    height: 100%;
+                    font-size: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 780px) {
+    .instar-inner {
+        padding-left: 4vw;
+        padding-right: 4vw;
+        padding-bottom: 5rem; 
+
+        .instar-list {
+            height: auto !important;
+
+            .insta-slider {
+                height: auto !important; 
+
+                .swiper-wrapper {
+                    display: grid !important;
+                    grid-template-columns: repeat(2, 1fr) !important; 
+                    gap: 10px !important;
+                    transform: none !important; 
+                    width: 100% !important;
+                    
+                    height: auto !important; 
+                }
+
+                .swiper-slide {
+                    width: 100% !important; 
+                    height: auto !important; 
+                    aspect-ratio: 1 / 1 !important; 
+                    
+                    margin: 0 !important; 
+                }
+            }
+        }
+    }
+}

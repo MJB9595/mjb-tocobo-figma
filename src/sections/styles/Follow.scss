@@ -1,0 +1,188 @@
+@use "sass:color";
+
+.follow-wrap {
+  width: 100%;
+  background-color: #FEFEF2;
+  
+  padding: clamp(15rem, 20vw, 32rem) 0;
+
+  .follow-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    gap: clamp(4rem, 6vw, 8rem);
+    padding: 0 clamp(2rem, 4vw, 4rem);
+    
+    transition: gap 0.5s ease, padding 0.5s ease;
+
+    .left-collage {
+      width: 55%;
+      background-color: #ffffff; 
+      aspect-ratio: 884 / 495; 
+      
+      padding: clamp(2px, 0.4vw, 5px);
+      gap: clamp(2px, 0.4vw, 5px);
+      
+      border-radius: 4px;
+      display: grid;
+      grid-template-columns: 349fr 266fr 259fr;
+      grid-template-rows: 170fr 151fr 164fr;
+      flex-shrink: 0;
+      transition: width 0.5s ease;
+
+      .grid-item {
+        background-color: #D9D9D9;
+        border-radius: 2px;
+        overflow: hidden;
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .item1, .item2, .item3 {
+        position: relative;
+        overflow: visible; 
+        
+        &::after {
+          content: '';
+          position: absolute;
+
+          top: clamp(-30px, -2vw, -15px); 
+          left: 0px;
+          right: 0px;
+          
+          height: clamp(20px, 3vw, 40px);
+          background-size: 100% 100%;
+          background-position: top center;
+          background-repeat: no-repeat;
+          z-index: -10; 
+          pointer-events: none; 
+        }
+      }
+
+      .item1 { 
+        grid-column: 1 / 2; grid-row: 1 / 3; 
+        &::after { background-image: url('/img/tear-mask-1.png'); } 
+      } 
+      
+      .item2 { 
+        grid-column: 2 / 3; grid-row: 1 / 3; 
+        &::after { background-image: url('/img/tear-mask-2.png'); } 
+        img {
+            object-position: left bottom;
+            transform: translateY( 1%);
+        }
+      } 
+      
+      .item3 { 
+        grid-column: 3 / 4; grid-row: 1 / 2; 
+        &::after { background-image: url('/img/tear-mask-3.png'); } 
+      } 
+      
+      .item4 { grid-column: 1 / 3; grid-row: 3 / 4; } 
+      .item5 { grid-column: 3 / 4; grid-row: 2 / 4; }
+    }
+
+    .right-text {
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: width 0.5s ease;
+
+      .tit {
+        font-size: clamp(2.8rem, 3.5vw, 4.8rem);
+        font-family: '명조체', 'SeoulHangang', serif;
+        color: #222;
+        margin-bottom: clamp(1.5rem, 2vw, 2.5rem);
+      }
+
+      .desc {
+        font-size: clamp(1.4rem, 1.2vw, 1.6rem);
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: clamp(2.5rem, 3vw, 4rem);
+        word-break: keep-all;
+      }
+
+      .btn-meet {
+        display: inline-block;
+        background-color: #b2996e;
+        color: #fff;
+
+        padding: clamp(1.2rem, 1.2vw, 1.5rem) clamp(2.5rem, 3vw, 4rem);
+        border-radius: 30px;
+        
+        font-size: clamp(1.2rem, 1vw, 1.4rem);
+        font-weight: 500;
+        text-decoration: none;
+        letter-spacing: 0.1rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: color.adjust(#b2996e, $lightness: -10%);
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .follow-inner {
+        flex-direction: row; 
+        gap: 3rem;
+        padding: 0 4rem;
+        
+        .left-collage { width: 55%; }
+        .right-text {
+            width: 45%;
+            .tit { font-size: 3.6rem; margin-bottom: 2rem; }
+            .desc { font-size: 1.5rem; margin-bottom: 2.5rem; line-height: 1.6; }
+            .btn-meet { padding: 1.2rem 3rem; font-size: 1.3rem; }
+        }
+    }
+  }
+
+  @media (max-width: 780px) {
+    .follow-inner {
+      flex-direction: column; 
+      
+      gap: clamp(5rem, 12vw, 8.5rem); 
+      padding: 0 4vw;
+      
+      .left-collage { 
+        width: 100%; 
+      }
+      
+      .right-text {
+        width: 100%; 
+        
+        .tit { 
+            font-size: clamp(4rem, 8vw, 6.2rem); 
+            margin-bottom: 2.5rem; 
+        }
+        
+        .desc { 
+            font-size: clamp(1.8rem, 4.5vw, 2.6rem); 
+            margin-bottom: 4rem; 
+            line-height: 1.6; 
+        }
+        
+        .btn-meet { 
+            padding: clamp(1.6rem, 2.5vw, 2rem) clamp(3.5rem, 6vw, 5.1rem); 
+            
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem); 
+            
+            border-radius: 50px; 
+        }
+      }
+    }
+  }
+}
